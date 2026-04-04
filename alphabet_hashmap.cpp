@@ -9,10 +9,10 @@ cin>>s;
 
 
 //pre compution
-int hash[26]={0};
+int hash[256]={0};
 for(int i=0;i<s.size();i++)
 {
-    hash[s[i]-'a']+=1;
+    hash[s[i]]+=1;
 }
 
 
@@ -24,7 +24,7 @@ while(q--)
 {
   char ch;
   cin>>ch;
-  cout<<hash[ch-'a']<<endl;
+  cout<<hash[ch]<<endl;
 
 }
 
