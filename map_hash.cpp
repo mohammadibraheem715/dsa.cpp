@@ -28,17 +28,3 @@ int main()
     cout<<mpp[num]<<endl;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
