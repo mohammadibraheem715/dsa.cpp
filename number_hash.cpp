@@ -10,10 +10,11 @@ int main()
   {cin>>arr[i];}
 
     //pre computation
-    map<int,int>mpp;
+    int hash[10^6]={0};
     for(int i=0;i<n;i++)
     {
-      mpp[arr[i]]++;
+     hash[arr[i]]++;
+
     }
 
 
@@ -25,6 +26,6 @@ int main()
     int num;
     cin>>num;
     //fetch
-    cout<<mpp[num]<<endl;
+    cout<<hash[num]<<endl;
   }
 }
