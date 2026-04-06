@@ -12,7 +12,9 @@ int main()
     //pre computation
     map<int,int>mpp;
     for(int i=0;i<n;i++)
-   { mpp[arr[i]]++;}
+   { 
+    mpp[arr[i]]++;
+  }
 
 
 
