@@ -13,7 +13,7 @@ int main()
     int hash[10^6]={0};
     for(int i=0;i<n;i++)
     {
-     hash[arr[i]]++;
+     hash[arr[i]]++; 
     }
 
 
