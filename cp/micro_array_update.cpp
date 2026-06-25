@@ -4,19 +4,24 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-    int n,k,min;
-    cin>>n>>k;
-    min=k;
-    int a[n];
-    for(int i=0;i<n;i++){
-        cin>>a[i];
-    }
-    for(int i=0;i<n;i++){
-        if(min>a[i]){
-            min=a[i];
+    int m;
+    cin>>m;
+    int a[m][m];
+    for(int i=0;i<m;i++){
+        for(int j=0;j<m;j++){
+            cin>>a[i][j];
         }
     }
-    cout<<abs(min-k)<<endl;
+    //calculation
+    for(int i=0;i<m;i++){
+        for(int j=0;j<m;j++){
+            if(a[i][j]!=a[i][m-1-j]||a[i][j]!=a[m-1-i][j]){
+                cout<<"NO";
+                exit;
+            }
+        }
+    }
+    cout<<"YES";
 
     }
 }
