@@ -3,7 +3,7 @@ using namespace std;
 
 class Solution {
   public:
-    int maxSubarraySum(vector<int>& arr, int k) {
+    long long maxSubarraySum(vector<int>& arr, int k) {
         int n= arr.size();
         vector<long long> pre(n);
         pre[0]=arr[0];
