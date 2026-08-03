@@ -6,7 +6,7 @@ int main(){
     cin>>n;
     vector<int> prfac;
     for( int i = 2; i * i <= n; i++){
-        while(n % i == 0){
+        while(n % i == 0){f
             prfac.push_back(i);
             n /= i;
         }
