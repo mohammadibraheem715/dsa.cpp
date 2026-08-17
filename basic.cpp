@@ -1,35 +1,44 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+
 int main(){
-int n,m;
-cin>>n>>m;
-int a[n][m];
-//input array
-for(int i=0;i<n;i++){
-for(int j=0;j<m;j++)
-{
-cin>>a[i][j];
-}}
-int u=0,v=0;
-//computation
-int b = min(n,m);
-for(int i=0;i<b;i++){
-    u=0;
-    v=0;
-    for(int z=0;z<b;z++)
-    { u=u+a[z][i];}
-    for(int z=0;z<b;z++)
-    { v=v+a[i][z];}
-    
-    if(u!=v)
-    { 
-        cout<<"false";
-        exit(0);
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        long long a;
+
+        cin>>n>>a;
+
+        vector<long long> c(n);
+        vector<long long> d(n);
+        
+        for(int i = 0; i < n; i++){
+            cin >>  c[i] >> d[i];
+        }
+
+        long long profit=0;
+
+        for(int i=0;i<n;i++){
+            long long earn = 0;
+            long long max_din = c[i];
+            long long min_din = d[i];
+
+            for(int j = i; j < n; j++){
+                long long d_val = d[j];
+
+                if(max_din<d[j]) max_din = d[j];
+                if(min_din<d[j]) min_din = d[j];
+                earn += c[j];
+
+                long long count =  j-i+1;
+                long long pen = ( max_din - min_din ) * ( max_din - min_din );
+                long long sum = ( a * count ) - earn - pen;
+                
+            }
+        }
+
+        cout << endl;   
+
     }
-    
-
-}
-
-        cout<<"true";
-
 }
