@@ -17,12 +17,19 @@ void disjktra(int source){
     while(set.size() > 0){
         auto node = *set.begin();
         int v = node.second;
-        int dist = node.first;
+        int dist_v = node.first;
+        set.erase(set.begin());
+        if(vis[v] == 1) continue;
+        vis[v] = 1;
 
         for(auto child : g[v]){
             int child_v = child.first;
+            int wt = child.second;
+            if(dis[dist_v] + wt < dis[child_v]){
+                dis[child_v] = dis[dist_v] + wt;
+                set.insert(dis[child_v], child_v})
+            }
         }
-
     }
 }
 
