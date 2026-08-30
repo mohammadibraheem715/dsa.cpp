@@ -8,14 +8,13 @@ int k;
 
 int frog(int i){
     if(i == 0) return 0;
-    if(dp[i] != -1) return dp[i];
     int cost = INT_MAX;
 
-    for(int j = 1; j <= k; j++){
+    for(int j = 0; j < k; j++){
         if(i - j >= 0)
         cost = min(cost, frog(i - j) + abs(h[i] - h[i - j]));
     }
-    return cost;
+    
 }
 
 int main(){
