@@ -1,29 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 1e5 + 10;
+int wt[105], val[105];
+long long dp[105][100005];
 
-int h[N];
-int dp[N];
-int k;
-
-int frog(int i){
-    if(i == 0) return 0;
-    if(dp[i] != -1) return dp[i];
-    int cost = INT_MAX;
-
-    for(int j = 1; j <= k; j++){
-        if(i - j >= 0)
-        cost = min(cost, frog(i - j) + abs(h[i] - h[i - j]));
-    }
-    return cost;
+long long func(int index, int wtl){
+    if(wtl == 0) return 0;
+    if(index < 0) return 0;
+    if(dp[index][wtl] != -1) return dp[index][wtl];
+    long long ans = func(index - 1, wtl);
+    if(wtl - wt[index] >= 0)
+    ans = max(ans, func(index - 1, wtl - wt[index]) + val[index]);
+    return ans;
 }
-
 int main(){
     memset(dp, -1, sizeof(dp));
-    int n;
-    cin >> n >> k;
+    int n, w;
+    cin >> n >> w;
     for(int i = 0; i < n; i++){
-        cin >> h[i];
+        cin >> wt[i] >> val[i];
     }
-    cout << frog(n - 1);
+    cout << func(n-1, w);
 }
