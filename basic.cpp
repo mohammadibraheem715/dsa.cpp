@@ -1,24 +1,64 @@
 #include <bits/stdc++.h>
 using namespace std;
 const int N = 1e5 + 10;
-int wt[105], val[105];
-long long dp[105][100005];
 
-long long func(int index, int wtl){
-    if(wtl == 0) return 0;
-    if(index < 0) return 0;
-    if(dp[index][wtl] != -1) return dp[index][wtl];
-    long long ans = func(index - 1, wtl);
-    if(wtl - wt[index] >= 0)
-    ans = max(ans, func(index - 1, wtl - wt[index]) + val[index]);
-    return ans;
+int parent[N];
+int size[N];
+multiset<int> sizes;
+
+void make(int v){
+    parent[v] = v;
+    size[v] = 1;
+    sizes.insert(1);
 }
-int main(){
-    memset(dp, -1, sizeof(dp));
-    int n, w;
-    cin >> n >> w;
-    for(int i = 0; i < n; i++){
-        cin >> wt[i] >> val[i];
+
+int  find(int v){
+    if(parent[v] == v) return v;
+    return parent[v] = find(parent[v]);
+}
+
+void merge(int a, int b){
+    sizes.erase(sizes.find(size[a]));
+    sizes.erase(sizes.find(size[b]));
+
+    sizes.insert(size[a] + size[b]);
+}
+
+void Union(int a, int b){
+    a = find(a);
+    b = find(b);
+
+    if(a != b){
+        if(size[a] < size[b]){
+            swap(a, b);
+        }
+        parent[b] = a;
+        size[a] += size[b];
     }
-    cout << func(n-1, w);
+}
+
+int main(){
+   int n, k;
+   cin >>  n >> k;
+    for(int i = 1; i <= n; i++){
+        make(i);
+    }
+
+    while(k--){
+        int u, v;
+        cin >> u >> v;
+        Union(u, v);
+        if(sizes.size() == 1){
+            cout << 0;
+        }
+        else{
+            int max = *(sizes.begin());
+            int min = *(--sizes.end());
+
+            cout << max - min << endl;
+        }
+    }
+
+  
+
 }
