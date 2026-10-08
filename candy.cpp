@@ -14,4 +14,4 @@ public:
         }
         return accumulate(candies.cbegin(), candies.cend(), 0);
     }
-};
+};w
